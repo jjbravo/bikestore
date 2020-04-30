@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+   // END_POINT: 'https://peaceful-mesa-49437.herokuapp.com'
+   END_POINT: 'http://localhost:8080'
 };
 
 /*

@@ -1,0 +1,39 @@
+<h1>Comments</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <div *ngIf="existData" class="alert alert-info" role="alert">
+            <strong>Message</strong>
+            <p>No existen datos para mostrar</p>
+        </div>
+        <form [formGroup]="searchForm" (ngSubmit)="searchComment()">
+        <div class="form-group">
+          <label for=""></label>
+          <input type="text"
+            class="form-control" formControlName="postId"  name="postId" id="" aria-describedby="helpId" placeholder="">
+        </div>
+        <button type="submit"  [disabled]="searchForm.invalid" >Buscar</button>
+
+    </form>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Period Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of commentsList">
+            <td scope="row">{{item.id}}</td>
+            <td>{{item.postId}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.body}}</td>
+        </tr>
+       
+    </tbody>
+</table>

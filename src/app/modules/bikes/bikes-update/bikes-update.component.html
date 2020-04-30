@@ -1,0 +1,40 @@
+<h2>Update</h2>
+<div class="card text-left">
+    <div class="card-body">
+      <h4 class="card-title">Title</h4>
+      <form [formGroup]="formCreate" (ngSubmit)="update()" name="formCreate" novalidate >
+      <div class="form-group">
+        <label for="">Model</label>
+        <input type="text" formControlName="model"
+          class="form-control" name="model" id="" aria-describedby="helpId" placeholder="">
+        <small id="helpId" class="form-text text-muted">Help text</small>
+        <div *ngIf="formCreate.get('model').invalid && (formCreate.get('model').dirty || formCreate.get('model').touched)">
+          <small class="form-text text-danger" *ngIf="formCreate.get('model').errors.required">
+              Este campo es requerido
+          </small >
+          <small class="form-text text-danger" *ngIf="formCreate.get('model').errors.maxlength">
+              Este campo debe tener máximo 4 caracteres
+          </small>
+          <small class="form-text text-danger" *ngIf="formCreate.get('model').errors.minlength">
+              Este campo debe tener mínimo 2 caracteres
+          </small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+          <label for="">Price</label>
+          <input type="text" formControlName="price"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="">Serial</label>
+          <input type="text" formControlName="serial"
+            class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+      <button type="submit"  [disabled]="formCreate.invalid" >Guardar</button>
+  </form>
+    </div>
+  </div>

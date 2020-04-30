@@ -1,0 +1,25 @@
+<h2>Clients</h2>
+<div class="row">
+        <div class="col-lg-2">
+                <nav class="nav flex-column">
+                        <li class="nav-item">
+                            <a [routerLink]="'clients-list'"  routerLinkActive="router-link-active" >List</a>
+                        </li>
+                        <li class="nav-item">
+                                <a [routerLink]="'/clients/clients-view'"   routerLinkActive="router-link-active" >View</a>
+                        </li>
+                        <li class="nav-item">
+                                <a [routerLink]="'/clients/clients-create'"   routerLinkActive="router-link-active" >Create</a>
+                        </li>
+                        <li class="nav-item">
+                                <a [routerLink]="'/clients/clients-update'"  routerLinkActive="router-link-active" >update</a>
+                        </li>
+                    </nav>
+        </div>
+        <div class="col-lg-10">
+                <router-outlet></router-outlet>
+        </div>
+    </div>
+    
+    
+    

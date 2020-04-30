@@ -1,4 +1,5 @@
 <div class="row">
+ 
   <form [formGroup]="searchForm" (ngSubmit)="searchBike()" >
 
     <input type="text" formControlName="serial" (blur)="searchBike()"  name="serial"  >
@@ -16,7 +17,11 @@
   <div class="card-body">
     <h4 class="card-title">Title</h4>
     <form [formGroup]="formCreate" (ngSubmit)="save()" name="formCreate" novalidate >
-    <div class="form-group">
+      
+      <p-inputSwitch (onChange)="change(formCreate.get('checked').value)" formControlName="checked"></p-inputSwitch>
+
+   
+      <div class="form-group">
       <label for="">Model</label>
       <input type="text" formControlName="model"
         class="form-control" name="model" id="" aria-describedby="helpId" placeholder="">

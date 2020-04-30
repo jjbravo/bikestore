@@ -6,9 +6,9 @@ import { BikesUpdateComponent } from './bikes-update/bikes-update.component';
 import { BikesViewComponent } from './bikes-view/bikes-view.component';
 import { BikesRoutingModule } from './bikes-routing.module';
 import { BikesMainComponent } from './bikes-main/bikes-main.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommentsComponent } from './comments/comments.component';
-// import { InputSwitchModule } from 'primeng/inputswitch';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 
@@ -23,9 +23,10 @@ import { CommentsComponent } from './comments/comments.component';
       ],
   imports: [
     CommonModule,
+    FormsModule,
     BikesRoutingModule,
     ReactiveFormsModule, // Importar para usar formularios reactivos de angular con formBuilder
-    // InputSwitchModule
+    InputSwitchModule
   ]
 })
 export class BikesModule { }

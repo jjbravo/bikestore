@@ -9,10 +9,13 @@ import { IBike } from '../model/bike';
 })
 export class BikesCreateComponent implements OnInit {
  bike: IBike;
+ checked: boolean;
+
   formCreate = this.formBuilder.group({
     model: ['', [Validators.maxLength(3), Validators.minLength(2), Validators.required]],
     price: ['', [Validators.required]],
-    serial: ['', [Validators.required, Validators.maxLength(4)]]
+    serial: ['', [Validators.required, Validators.maxLength(4)]],
+    checked: []
   });
 
   searchForm = this.formBuilder.group({
@@ -42,4 +45,7 @@ export class BikesCreateComponent implements OnInit {
     })
   }
 
+  change(status: any): void {
+    console.warn('status ',status);
+  }
 }

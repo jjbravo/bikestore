@@ -19,16 +19,39 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <form [formGroup]="formSearch" class="form-inline" novalidate (ngSubmit)="searchClient()">
-                            <div class="form-group mb-2">
+                            <!--div class="form-group mb-2">
                                 <label for="client" class="sr-only">Cliente</label>
-                                <input type="text" autocomplete="off" name="document" formControlName="document" placeholder="Documento"
+                                <input type="text" autocomplete="off" name="document" formControlName="client" placeholder="Documento"
                                     class="form-control" id="client">
-                            </div>
+                            </div -->
 
-                            <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+                            <p>Cliente</p>
+                            <!-- Autocomplete -->
+                            <p-autoComplete 
+                            formControlName="client" 
+                            field="name"
+                            [suggestions]="results" 
+                            (completeMethod)="search($event)"
+                            [showTransitionOptions]="'0ms'" 
+                            [hideTransitionOptions]="'0ms'"
+                            (change)="changeSelected()"
+                            >
+                            <ng-template let-brand pTemplate="item">
+                                <div class="ui-helper-clearfix">
+                                    <div>{{brand.name}}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-value pTemplate="selectedItem">
+                                <span>>{{value.document}}</span>
+                            </ng-template>
+                        </p-autoComplete>
+                        
+                        <!-- <button type="submit" class="btn btn-primary mb-2">Buscar</button> -->
+                            <!-- Autocomplete -->
                         </form>
                     </div>
                 </div>
+                <hr>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="alert alert-danger" role="alert" *ngIf="clientNoSelected">

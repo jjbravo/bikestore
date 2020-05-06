@@ -18,29 +18,35 @@ export class CatalogueComponent implements OnInit {
   total: number = 0;
   clientList: IClient[] = [];
   formSearch = this.fb.group({
-    document: ['']
+    client: ''
   });
 
   selectedClientItem: IClient;
   clientNoSelected = false;
-  constructor(private bikeService: BikesService, 
-    private clientService: ClientService, 
+
+
+  text: string;
+
+  results: IClient[];
+
+  constructor(private bikeService: BikesService,
+    private clientService: ClientService,
     private fb: FormBuilder,
     private saleService: SalesService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.bikeService.queryBikes()
-    .subscribe(res => {
-      this.bikesList = res;
-    })
+      .subscribe(res => {
+        this.bikesList = res;
+      })
   }
 
   addToCar(bike: IBike): void {
-    if(!this.selectedClientItem) {
+    if (!this.selectedClientItem) {
       console.log('Seleccione un Cliente');
       this.clientNoSelected = true;
-    }else { 
+    } else {
       this.total += parseFloat(bike.price);
       this.carSale.push({
         bikeId: bike.id,
@@ -53,12 +59,14 @@ export class CatalogueComponent implements OnInit {
   }
 
   searchClient(): void {
-    this.clientService.queryParam({
+    console.warn('selected Data ',this.formSearch.value);
+   /* this.clientService.queryParam({
       'document': this.formSearch.value.document
     }).subscribe(res => {
       this.clientList = res;
-      console.log('Client ',this.clientList);
+      console.log('Client ', this.clientList);
     });
+    */
   }
 
   cleanCar(): void {
@@ -66,16 +74,31 @@ export class CatalogueComponent implements OnInit {
   }
 
   selectedClient(client: IClient) {
-    console.log('Client ',client);
+    console.log('Client ', client);
     this.selectedClientItem = client;
     this.clientNoSelected = false;
   }
 
   saveSale() {
     this.saleService.saveMultiple(this.carSale)
-    .subscribe(res => {
-      console.log('res ',res);
-    })
+      .subscribe(res => {
+        console.log('res ', res);
+      })
   }
 
+
+  changeSelected(): void {
+    this.selectedClientItem = this.formSearch.value.client
+    this.clientNoSelected = false;
+
+  }
+
+  search(event) {
+    this.clientService.query({
+      'document.contains': event.query
+    }).subscribe(data => {
+      this.results = data;
+      console.warn(this.results);
+    });
+  }
 }

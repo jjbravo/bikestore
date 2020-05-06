@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { SalesRoutingModule } from './sales-routing.module';
 import { CatalogueComponent } from './catalogue/catalogue.component';
 import { DetailCarComponent } from './detail-car/detail-car.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SalesListComponent } from './sales-list/sales-list.component';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import { SalesListComponent } from './sales-list/sales-list.component';
   imports: [
     CommonModule,
     SalesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutoCompleteModule,
+    FormsModule
   ]
 })
 export class SalesModule { }

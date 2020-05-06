@@ -12,8 +12,9 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
-  public query(): Observable<IClient[]> {
-    return this.http.get<IClient[]>(`${environment.END_POINT}/api/clients`)
+  public query(req?: any): Observable<IClient[]> {
+    const params = createRequestOption(req);
+    return this.http.get<IClient[]>(`${environment.END_POINT}/api/clients`,{params: params})
     .pipe(map(res => {
       return res;
     }));

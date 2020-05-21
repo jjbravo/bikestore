@@ -23,7 +23,7 @@ export class CatalogueComponent implements OnInit {
 
   selectedClientItem: IClient;
   clientNoSelected = false;
-
+  confirmSaleShowDialog = false;
 
   text: string;
 
@@ -36,9 +36,12 @@ export class CatalogueComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bikeService.queryBikes()
-      .subscribe(res => {
-        this.bikesList = res;
+    this.bikeService.queryBikes({
+      pageSize: 10,
+      pageNumber: 0
+    })
+      .subscribe((res: any) => {
+        this.bikesList = res.content;
       })
   }
 
@@ -58,17 +61,6 @@ export class CatalogueComponent implements OnInit {
 
   }
 
-  searchClient(): void {
-    console.warn('selected Data ',this.formSearch.value);
-   /* this.clientService.queryParam({
-      'document': this.formSearch.value.document
-    }).subscribe(res => {
-      this.clientList = res;
-      console.log('Client ', this.clientList);
-    });
-    */
-  }
-
   cleanCar(): void {
     this.carSale = [];
   }
@@ -83,18 +75,24 @@ export class CatalogueComponent implements OnInit {
     this.saleService.saveMultiple(this.carSale)
       .subscribe(res => {
         console.log('res ', res);
-      })
+        this.confirmSaleShowDialog = true;
+      });
   }
 
 
+  closeDialog(): void {
+    this.confirmSaleShowDialog = false;
+    this.cleanCar();
+    this.selectedClientItem = null;
+  }
   changeSelected(): void {
     this.selectedClientItem = this.formSearch.value.client
     this.clientNoSelected = false;
 
   }
 
-  search(event) {
-    this.clientService.query({
+  search(event: any) {
+    this.clientService.queryParam({
       'document.contains': event.query
     }).subscribe(data => {
       this.results = data;

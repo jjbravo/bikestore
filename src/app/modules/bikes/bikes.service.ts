@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { createRequestOption } from 'src/app/shared/request_utils';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,8 +12,9 @@ export class BikesService {
 
   constructor(private http: HttpClient) { }
 
-  public queryBikes(): Observable<IBike[]> {
-    return this.http.get<IBike[]>(`${environment.END_POINT}/api/bikes`)
+  public queryBikes(req?: any): Observable<IBike[]> {
+    let params = createRequestOption(req);
+    return this.http.get<IBike[]>(`${environment.END_POINT}/api/bikes`,{params: params})
     .pipe(map(res => {
       return res;
     }));

@@ -1,81 +1,54 @@
-<h3>Catalogo</h3>
-
 <div class="row">
-    <div class="col-lg-2">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                aria-controls="v-pills-home" aria-selected="true">Home</a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" [routerLink]="['sales-list']" role="tab"
-                aria-controls="v-pills-profile" aria-selected="false">Ventas</a>
-            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
-                aria-controls="v-pills-messages" aria-selected="false">Messages</a>
-            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
-                aria-controls="v-pills-settings" aria-selected="false">Settings</a>
-        </div>
+    <div class="col-lg-12">
+        <form [formGroup]="formSearch" class="form-inline" novalidate >
+            <p>Cliente</p>
+            <p-autoComplete 
+                formControlName="client" 
+                field="clientName" 
+                (onSelect)="selectedClient($event)"
+                [suggestions]="results"
+                (completeMethod)="search($event)" 
+                (change)="changeSelected()">
+                <ng-template let-brand pTemplate="item">
+                    <div class="ui-helper-clearfix">
+                        <div>{{brand.clientName}}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-value pTemplate="selectedItem">
+                    <span>>{{value.id}}</span>
+                </ng-template>
+            </p-autoComplete>
+
+
+        </form>
     </div>
-    <div class="col-lg-8">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form [formGroup]="formSearch" class="form-inline" novalidate (ngSubmit)="searchClient()">
-                            <!--div class="form-group mb-2">
-                                <label for="client" class="sr-only">Cliente</label>
-                                <input type="text" autocomplete="off" name="document" formControlName="client" placeholder="Documento"
-                                    class="form-control" id="client">
-                            </div -->
+</div>
+<div class="row">
 
-                            <p>Cliente</p>
-                            <!-- Autocomplete -->
-                            <p-autoComplete 
-                            formControlName="client" 
-                            field="name"
-                            [suggestions]="results" 
-                            (completeMethod)="search($event)"
-                            [showTransitionOptions]="'0ms'" 
-                            [hideTransitionOptions]="'0ms'"
-                            (change)="changeSelected()"
-                            >
-                            <ng-template let-brand pTemplate="item">
-                                <div class="ui-helper-clearfix">
-                                    <div>{{brand.name}}</div>
-                                </div>
-                            </ng-template>
-                            <ng-template let-value pTemplate="selectedItem">
-                                <span>>{{value.id}}</span>
-                            </ng-template>
-                        </p-autoComplete>
-                        
-                        <!-- <button type="submit" class="btn btn-primary mb-2">Buscar</button> -->
-                            <!-- Autocomplete -->
-                        </form>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="alert alert-danger" role="alert" *ngIf="clientNoSelected">
-                            <strong>Mensaje</strong> Seleccione un cliente para continuar con la venta
-                        </div>
-                        <div class="card" *ngIf="clientList.length > 0">
-                            <img class="card-img-top" src="holder.js/100px180/" alt="">
-                            <div class="card-body" style="width: 100%;">
-                                <div *ngFor="let item of clientList">
-
-                                    <h4 class="card-title">{{item.name}}</h4>
-                                    <p class="card-text">{{item.document}}</p>
-                                    <button (click)="selectedClient(item)"
-                                        class="btn btn-sm btn-success">Select</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-lg-10">
+        <div class="alert alert-danger" role="alert" *ngIf="clientNoSelected">
+            <strong>Mensaje</strong> Seleccione un cliente para continuar con la venta
+        </div>
+        <div class="card" *ngIf="selectedClientItem">
+            <div class="card-body" style="width: 100%;">
+                    <h4 class="card-title">Nombres: {{selectedClientItem.clientName}}</h4>
+                    <p class="card-text">Documento: {{selectedClientItem.documentNumber}}</p>
+                    <p class="card-text">Email: {{selectedClientItem.clientEmail}}</p>
+                    <p class="card-text">Teléfono: {{selectedClientItem.phoneNumber}}</p>
             </div>
         </div>
+
+    </div>
+</div>
+<hr>
+<div class="row">
+
+    <div class="col-lg-10">
+
         <div class="row">
             <div class="card text-left" style="width: 8rem;margin: 6px;" *ngFor="let item of bikesList">
-                    <img class="card-img-top"  [src]="'data:' + item.imageContentType + ';base64,' + item.image" style="max-height: 286px;" alt="bike image"/>
+                <img class="card-img-top" [src]="'data:' + item.imageContentType + ';base64,' + item.image"
+                    style="max-height: 286px;" alt="bike image" />
                 <div class="card-body">
                     <h5 class="card-title">{{item.model}}</h5>
                     <p class="card-text">{{item.price | currency:'COP $':'symbol':'4.0-2'}}</p>
@@ -87,7 +60,7 @@
     </div>
     <div class="col-lg-2">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <div class="btn-primary" *ngIf="carSale.length > 0" >{{carSale[0].client.name}}</div>
+            <div class="btn-primary" *ngIf="carSale.length > 0">{{carSale[0].client.clientName}}</div>
             <a class="nav-link active car-app">Car {{total | currency: 'COP $'}}</a>
             <div *ngFor="let item of carSale">
                 <span class="item-car">{{item.bike.model}} {{item.bike.price | currency }}</span>
@@ -97,3 +70,10 @@
         </div>
     </div>
 </div>
+
+<p-dialog header="Mensaje" [(visible)]="confirmSaleShowDialog">
+    <p>Venta realizada correctamente</p>
+    <p-footer>
+        <button type="button" class="btn btn-success" pButton icon="pi pi-check" (click)="closeDialog()" label="Yes">Ok</button>
+    </p-footer>
+</p-dialog>

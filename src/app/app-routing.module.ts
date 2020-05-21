@@ -4,6 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module')
+    .then(m => m.DashboardModule)
+  },
+  {
     path: 'bikes',
     loadChildren: () => import('./modules/bikes/bikes.module')
     .then(m => m.BikesModule)
@@ -25,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   }
 ];

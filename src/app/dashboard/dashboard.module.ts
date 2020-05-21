@@ -6,6 +6,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AsideComponent } from './aside/aside.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { SalesModule } from '../modules/sales/sales.module';
+import { BikesModule } from '../modules/bikes/bikes.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SalesModule } from '../modules/sales/sales.module';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SalesModule
+    SalesModule,
+    BikesModule
   ]
 })
 export class DashboardModule { }

@@ -9,6 +9,7 @@ import { BikesMainComponent } from './bikes-main/bikes-main.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommentsComponent } from './comments/comments.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -24,9 +25,10 @@ import { InputSwitchModule } from 'primeng/inputswitch';
   imports: [
     CommonModule,
     FormsModule,
+    FontAwesomeModule,
     BikesRoutingModule,
     ReactiveFormsModule, // Importar para usar formularios reactivos de angular con formBuilder
     InputSwitchModule
   ]
 })
-export class BikesModule { }
+export class BikesModule {}

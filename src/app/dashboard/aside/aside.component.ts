@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-aside',
@@ -7,7 +6,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./aside.component.styl']
 })
 export class AsideComponent implements OnInit {
-  faSearch = faSearch;
 
   constructor() { }
 

@@ -8,7 +8,7 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
 import { SalesModule } from '../modules/sales/sales.module';
 import { BikesModule } from '../modules/bikes/bikes.module';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCoffee, faStore, faBicycle } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faStore, faBicycle, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
@@ -27,5 +27,6 @@ export class DashboardModule {
     library.addIcons(faCoffee);
     library.addIcons(faStore);
     library.addIcons(faBicycle);
+    library.addIcons(faSearch);
   }
  }

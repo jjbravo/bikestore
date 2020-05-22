@@ -7,12 +7,14 @@ import { AsideComponent } from './aside/aside.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { SalesModule } from '../modules/sales/sales.module';
 import { BikesModule } from '../modules/bikes/bikes.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
   declarations: [NavbarComponent, AsideComponent, MainDashboardComponent],
   imports: [
     CommonModule,
+    FontAwesomeModule,
     DashboardRoutingModule,
     SalesModule,
     BikesModule

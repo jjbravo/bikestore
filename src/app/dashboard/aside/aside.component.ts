@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { faStore, faBicycle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-aside',
@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aside.component.styl']
 })
 export class AsideComponent implements OnInit {
-  //faStore = faStore;
-  // faBicycle = faBicycle;
+  faSearch = faSearch;
 
   constructor() { }
 

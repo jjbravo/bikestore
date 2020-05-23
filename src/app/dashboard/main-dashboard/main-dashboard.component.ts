@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-dashboard.component.styl']
 })
 export class MainDashboardComponent implements OnInit {
+  collapsedSideBar: boolean;
 
-  constructor() { }
+  constructor() {
+   
+   }
 
   ngOnInit(): void {
+    this.collapsedSideBar = true;
   }
 
+  receiveCollapsed($event: any): void {
+    this.collapsedSideBar = $event;
+    console.log('event ',this.collapsedSideBar);
+  }
 }

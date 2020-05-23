@@ -1,0 +1,29 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, 'collapsed-sidebar': collapsed}">
+   <ul class="nav flex-column"  >
+    <li class="nav-item">    
+      <a class="nav-link active" routerLinkActive="active" >
+        Home
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"  [routerLink]="['../dashboard/catalogo']"><fa-icon icon="search"></fa-icon>Ventas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['../dashboard/bikes-list']"><fa-icon icon="bicycle"></fa-icon> Bikes</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['../dashboard/bikes-update']"><fa-icon icon="bicycle"></fa-icon> Bikes Update</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>
+  
+  <div class="toggle-button-sidebar" [ngClass]="{'collapsed-sidebar': collapsed}" (click)="toggleCollapsed()">
+    <fa-icon icon="angle-double-left" [fixedWidth]="true" *ngIf="!collapsed"></fa-icon>
+    <fa-icon icon="angle-double-right" [fixedWidth]="true" *ngIf="collapsed"></fa-icon>
+    <!--<span>Reducir Menú</span>-->
+</div>
+</nav>

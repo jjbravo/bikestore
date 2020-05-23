@@ -1,13 +1,8 @@
-<app-navbar></app-navbar>
-<div class="container-fluid safi-container">
-
-    <div class="row">
-        <div class="col-lg-2">
-            <app-aside></app-aside>
-        </div>
-        <div class="col-lg-10">
+<div> <!-- div main dashboard -->
+    <app-navbar></app-navbar>
+    <!-- Delete if exist login system [ngClass]="{'collapsed': collapsedSideBar}" -->
+        <app-sidebar (collapsedEvent)="receiveCollapsed($event)" ></app-sidebar>
+    <div class="main-container" [ngClass]="{'collapsed-main-container': collapsedSideBar}">
             <router-outlet></router-outlet>
-        </div>
     </div>
 </div>
-    

@@ -31,5 +31,7 @@
           
         </tr>
     </tbody>
+    
 </table>
+<p-paginator [rows]="pageSize" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
 

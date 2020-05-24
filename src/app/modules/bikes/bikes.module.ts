@@ -10,6 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommentsComponent } from './comments/comments.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {PaginatorModule} from 'primeng/paginator';
 
 
 
@@ -28,7 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     BikesRoutingModule,
     ReactiveFormsModule, // Importar para usar formularios reactivos de angular con formBuilder
-    InputSwitchModule
+    InputSwitchModule,
+    PaginatorModule
   ]
 })
 export class BikesModule {}

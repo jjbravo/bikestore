@@ -18,17 +18,28 @@ export class BikesListComponent implements OnInit {
   sale = {
     idClient: 0
   };
+
+  totalRecords: any;
+  pageSize = 10;
+  pageNumber = 0;
   constructor(private bikesService: BikesService) {
    }
 
   ngOnInit() {
-   this.bikesService.queryBikes()
-   .subscribe(res => {
-     this.bikesList = res;
-   });
+   this.loadingBikesPage(this.pageNumber, this.pageSize);
 
   }
 
+  loadingBikesPage(pageNumber: number, pageSize: number ): void {
+    this.bikesService.queryBikes({
+      pageSize: pageSize,
+      pageNumber: pageNumber
+    })
+    .subscribe((res: any) => {
+      this.bikesList = res.content;
+      this.totalRecords = res.totalElements;
+    });
+  }
   deleteItem(id: string) {
     this.bikesService.delete(id)
     .subscribe(res => {
@@ -38,4 +49,8 @@ export class BikesListComponent implements OnInit {
     });
   }
 
+  paginate(event: any): void {
+    console.warn('Event Paginate ',event);
+    this.loadingBikesPage(event.page, event.rows);
+  }
 }

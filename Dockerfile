@@ -1,4 +1,5 @@
 FROM node:12.18.0-stretch as node-server
+LABEL authors="Yohon Bravo"
 WORKDIR /bikestore
 COPY ./dist . 
 COPY ./prod . 

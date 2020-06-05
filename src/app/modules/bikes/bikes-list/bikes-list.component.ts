@@ -1,41 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { Bike, IBike } from '../model/bike';
 import { BikesService } from '../bikes.service';
-import { ClientService } from '../../clients/client.service';
-import { IClient } from '../../clients/client.model';
+import { IBike } from '../model/bike';
 
 @Component({
-  selector: 'app-bikes-list',
+  selector: 'app-bike-list',
   templateUrl: './bikes-list.component.html',
   styleUrls: ['./bikes-list.component.styl']
 })
 export class BikesListComponent implements OnInit {
 
-  public bikesList: IBike[];
-  public clientList: IClient[];
+  bikesList: IBike[];
 
-  deleteStatus = false;
-  sale = {
-    idClient: 0
-  };
-  constructor(private bikesService: BikesService) {
-   }
+  pageSize = 10;
+  pageNumber = 0;
+  totalRecords: any;
+  constructor(private bikeService: BikesService) { }
 
   ngOnInit() {
-   this.bikesService.queryBikes()
-   .subscribe(res => {
-     this.bikesList = res;
-   });
-
+  this.loadingPagenation({page: this.pageNumber});
   }
 
-  deleteItem(id: string) {
-    this.bikesService.delete(id)
-    .subscribe(res => {
-      console.log("Item Delete ok");
-      this.deleteStatus = true;
-      this.ngOnInit();
+  loadingPagenation(event: any): void {
+    console.log('Event ',event);
+    this.bikeService.query({
+      pageSize: this.pageSize,
+      pageNumber: event.page
+    })
+    .subscribe((res: any) => {
+
+      console.log('Get Data ', res);
+      this.bikesList = res.content;
+      this.totalRecords = res.totalElements;
+
+    }, error => {
+      console.error("Error ", error);
     });
   }
 
+ 
 }

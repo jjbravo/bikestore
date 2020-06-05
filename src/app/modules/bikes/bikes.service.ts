@@ -12,7 +12,7 @@ export class BikesService {
 
   constructor(private http: HttpClient) { }
 
-  public queryBikes(req?: any): Observable<IBike[]> {
+  public query(req?: any): Observable<IBike[]> {
     let params = createRequestOption(req);
     return this.http.get<IBike[]>(`${environment.END_POINT}/api/bikes`,{params: params})
     .pipe(map(res => {

@@ -36,7 +36,7 @@ export class CatalogueComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.bikeService.queryBikes({
+    this.bikeService.query({
       pageSize: 10,
       pageNumber: 0
     })

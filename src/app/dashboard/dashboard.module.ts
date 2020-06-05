@@ -3,16 +3,23 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AsideComponent } from './aside/aside.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainDashboardComponent } from './main-dashboard/main-dashboard.component';
 import { SalesModule } from '../modules/sales/sales.module';
 import { BikesModule } from '../modules/bikes/bikes.module';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCoffee, faStore, faBicycle, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { 
+  faCoffee, 
+  faStore, 
+  faBicycle, 
+  faSearch,
+  faAngleDoubleLeft,
+  faAngleDoubleRight
+ } from '@fortawesome/free-solid-svg-icons';
 
 
 @NgModule({
-  declarations: [NavbarComponent, AsideComponent, MainDashboardComponent],
+  declarations: [NavbarComponent, SidebarComponent, MainDashboardComponent],
   imports: [
     CommonModule,
     FontAwesomeModule,
@@ -28,5 +35,7 @@ export class DashboardModule {
     library.addIcons(faStore);
     library.addIcons(faBicycle);
     library.addIcons(faSearch);
+    library.addIcons(faAngleDoubleLeft);
+    library.addIcons(faAngleDoubleRight);
   }
  }

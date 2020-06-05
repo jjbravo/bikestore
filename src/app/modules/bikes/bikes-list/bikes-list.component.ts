@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Bike, IBike } from '../model/bike';
 import { BikesService } from '../bikes.service';
-import { ClientService } from '../../clients/client.service';
-import { IClient } from '../../clients/client.model';
+import { IBike } from '../model/bike';
 
 @Component({
-  selector: 'app-bikes-list',
+  selector: 'app-bike-list',
   templateUrl: './bikes-list.component.html',
   styleUrls: ['./bikes-list.component.styl']
 })
 export class BikesListComponent implements OnInit {
 
-  public bikesList: IBike[];
-  public clientList: IClient[];
+  bikesList: IBike[];
 
+<<<<<<< HEAD
   deleteStatus = false;
   sale = {
     idClient: 0
@@ -53,4 +51,33 @@ export class BikesListComponent implements OnInit {
     console.warn('Event Paginate ',event);
     this.loadingBikesPage(event.page, event.rows);
   }
+=======
+  pageSize = 10;
+  pageNumber = 0;
+  totalRecords: any;
+  constructor(private bikeService: BikesService) { }
+
+  ngOnInit() {
+  this.loadingPagenation({page: this.pageNumber});
+  }
+
+  loadingPagenation(event: any): void {
+    console.log('Event ',event);
+    this.bikeService.query({
+      pageSize: this.pageSize,
+      pageNumber: event.page
+    })
+    .subscribe((res: any) => {
+
+      console.log('Get Data ', res);
+      this.bikesList = res.content;
+      this.totalRecords = res.totalElements;
+
+    }, error => {
+      console.error("Error ", error);
+    });
+  }
+
+ 
+>>>>>>> develop
 }

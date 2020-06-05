@@ -24,47 +24,9 @@
                 </tr>
             </tbody>
 
-<<<<<<< HEAD
-<h1>Bikes List --- <fa-icon icon="bicycle"></fa-icon> </h1>
-
-
-<div *ngIf="deleteStatus" class="alert alert-primary" role="alert">
-   
-    <strong>Mensaje!</strong> Item eliminado correctamente
-</div>
-
-<table  class="table table-light">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Model</th>
-            <th>Serial</th>
-            <th>Price</th>
-            <th>Action</th>
-          
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of this.bikesList">
-            <td>{{ item.id }}</td>
-            <td>{{ item.model }}</td>
-            <td>{{ item.serial }}</td>
-            <td>{{ item.price }}</td>
-            <td>
-                <a [routerLink]="['./bikes-update',item.id]" routerLinkActive="router-link-active" >Update</a>
-                <button class="btn btn-primary" (click)="deleteItem(item.id)">Eliminar</button>
-            </td>
-          
-        </tr>
-    </tbody>
-    
-</table>
-<p-paginator [rows]="pageSize" [totalRecords]="totalRecords" (onPageChange)="paginate($event)"></p-paginator>
-=======
         </table>
         <div class="row justify-content-center">
             <div class="col-lg-10">
->>>>>>> develop
 
                 <p-paginator [rows]="pageSize" [totalRecords]="totalRecords" (onPageChange)="loadingPagenation($event)">
                 </p-paginator>

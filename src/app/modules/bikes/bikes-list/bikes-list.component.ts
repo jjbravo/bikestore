@@ -8,9 +8,8 @@ import { IBike } from '../model/bike';
   styleUrls: ['./bikes-list.component.styl']
 })
 export class BikesListComponent implements OnInit {
-
+ status: boolean;
   bikesList: IBike[];
-
   pageSize = 10;
   pageNumber = 0;
   totalRecords: any;
@@ -21,7 +20,7 @@ export class BikesListComponent implements OnInit {
   }
 
   loadingPagenation(event: any): void {
-    console.log('Event ',event);
+    console.log('Event ', event);
     this.bikeService.query({
       pageSize: this.pageSize,
       pageNumber: event.page
@@ -33,9 +32,16 @@ export class BikesListComponent implements OnInit {
       this.totalRecords = res.totalElements;
 
     }, error => {
-      console.error("Error ", error);
+      console.error('error ', error);
     });
   }
 
- 
+  changeStatus(item: IBike): void {
+    console.warn('item ', item);
+    this.bikeService.update(item)
+    .subscribe((res: IBike) => {
+      console.warn('Todo actualizado', res);
+    });
+  }
+
 }

@@ -9,8 +9,12 @@ import { BikesMainComponent } from './bikes-main/bikes-main.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommentsComponent } from './comments/comments.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {PaginatorModule} from 'primeng/paginator';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import {
+  faUnlock,
+  faLock
+ } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -33,4 +37,9 @@ import {PaginatorModule} from 'primeng/paginator';
     PaginatorModule
   ]
 })
-export class BikesModule {}
+export class BikesModule {
+  constructor(library: FaIconLibrary) {
+    // Add an icon to the library for convenient access in other components
+    library.addIcons(faUnlock, faLock);
+  }
+}

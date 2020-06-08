@@ -7,6 +7,8 @@
                     <th>Mode</th>
                     <th>Price</th>
                     <th>Serial</th>
+                    <th>Status</th>
+                    <th>Icon</th>
                     <th>Tipo Suspensión</th>
                     <th>Actions</th>
                 </tr>
@@ -17,6 +19,13 @@
                     <td>{{item.model}}</td>
                     <td>{{item.price}}</td>
                     <td>{{item.serial}}</td>
+                    <td>
+                        <p-inputSwitch (onChange)="changeStatus(item)" name="status" [(ngModel)]="item.status" ></p-inputSwitch>
+                    </td>
+                    <td>
+                        <fa-icon icon="unlock"  *ngIf="item.status" ></fa-icon>
+                        <fa-icon icon="lock"  *ngIf="!item.status" ></fa-icon>
+                    </td>
                     <td>{{item.typeShockAbsorber}}</td>
                     <td>
                         <a [routerLink]="['../bike-update',item.id]">Editar</a>
@@ -25,6 +34,7 @@
             </tbody>
 
         </table>
+
         <div class="row justify-content-center">
             <div class="col-lg-10">
 

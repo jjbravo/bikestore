@@ -3,6 +3,8 @@ export interface IBike {
     model: string;
     price: string;
     serial: string;
+    typeShockAbsorber: string;
+    status: boolean;
 }
 
 export class Bike implements IBike {
@@ -10,4 +12,6 @@ export class Bike implements IBike {
     model: string;
     price: string;
     serial: string;
+    typeShockAbsorber: string;
+    status: boolean;
 }

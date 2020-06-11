@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BikesService } from '../bikes.service';
 import { IBike } from '../model/bike';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-bike-list',
@@ -13,20 +14,44 @@ export class BikesListComponent implements OnInit {
   pageSize = 10;
   pageNumber = 0;
   totalRecords: any;
-  constructor(private bikeService: BikesService) { }
+  filterForm = this.fb.group({
+    model: '',
+    serial: ['', Validators.pattern('^[0-9]+$')],
+    email: ['', Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
+  });
+
+  filters = {};
+  constructor(private bikeService: BikesService, private fb: FormBuilder) { }
 
   ngOnInit() {
-  this.loadingPagenation({page: this.pageNumber});
+  this.loadingPagenation(this.pageNumber);
+  }
+
+  loadFilterEvent(): void {
+    this.formatFilters();
+    this.loadingPagenation(0);
+  }
+  private formatFilters(): void {
+    if (this.filterForm.value.model) {
+      this.filters['model'] = this.filterForm.value.model;
+    } else {
+      delete this.filters['model'];
+    }
+
+    if (this.filterForm.value.serial) {
+      this.filters['serial'] = this.filterForm.value.serial;
+    } else {
+      delete this.filters['serial'];
+    }
   }
 
   loadingPagenation(event: any): void {
     console.log('Event ', event);
-    this.bikeService.query({
-      pageSize: this.pageSize,
-      pageNumber: event.page
-    })
+    this.pageNumber = event;
+    this.filters['pageNumber'] = this.pageNumber;
+    this.filters['pageSize'] = this.pageSize;
+    this.bikeService.query(this.filters)
     .subscribe((res: any) => {
-
       console.log('Get Data ', res);
       this.bikesList = res.content;
       this.totalRecords = res.totalElements;

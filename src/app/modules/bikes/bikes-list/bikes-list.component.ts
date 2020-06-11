@@ -8,7 +8,7 @@ import { IBike } from '../model/bike';
   styleUrls: ['./bikes-list.component.styl']
 })
 export class BikesListComponent implements OnInit {
- status: boolean;
+ // status: boolean;
   bikesList: IBike[];
   pageSize = 10;
   pageNumber = 0;

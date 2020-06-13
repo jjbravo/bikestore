@@ -16,11 +16,11 @@ export class BikesListComponent implements OnInit {
   totalRecords: any;
   filterForm = this.fb.group({
     model: '',
-    serial: ['', Validators.pattern('^[0-9]+$')],
-    email: ['', Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]
+    serial: '',
   });
 
   filters = {};
+
   constructor(private bikeService: BikesService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -31,6 +31,7 @@ export class BikesListComponent implements OnInit {
     this.formatFilters();
     this.loadingPagenation(0);
   }
+
   private formatFilters(): void {
     if (this.filterForm.value.model) {
       this.filters['model'] = this.filterForm.value.model;
@@ -45,9 +46,9 @@ export class BikesListComponent implements OnInit {
     }
   }
 
-  loadingPagenation(event: any): void {
-    console.log('Event ', event);
-    this.pageNumber = event;
+  loadingPagenation(numberPage: number): void {
+    console.log('Event ', numberPage);
+    this.pageNumber = numberPage;
     this.filters['pageNumber'] = this.pageNumber;
     this.filters['pageSize'] = this.pageSize;
     this.bikeService.query(this.filters)

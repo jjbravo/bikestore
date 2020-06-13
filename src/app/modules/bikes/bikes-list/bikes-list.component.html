@@ -11,28 +11,13 @@
                 <label for="">Serial</label>
                 <input type="text" class="form-control" name="" id="" formControlName="serial" aria-describedby="helpId"
                     placeholder="">
-                    <div
-                    *ngIf="filterForm.get('serial').invalid && (filterForm.get('serial').dirty || filterForm.get('serial').touched)">
-                    <small class="form-text text-danger" *ngIf="filterForm.get('serial').errors.pattern">
-                        Ingrese sólo números en este campo
-                    </small>
-
-                </div>
+                
             </div>
 
-            <div class="form-group">
-                <label for="">Email</label>
-                <input type="text" class="form-control" formControlName="email">
-                <div
-                    *ngIf="filterForm.get('email').invalid && (filterForm.get('email').dirty || filterForm.get('email').touched)">
-                    <small class="form-text text-danger" *ngIf="filterForm.get('email').errors.pattern">
-                        Ingrese un email correcto
-                    </small>
-
-                </div>
-            </div>
-            <button [disabled]="filterForm.invalid" type="submit">Filtrar</button>
+          
+            <button  type="submit">Filtrar</button>
         </form>
+        
     </div>
 
 </div>

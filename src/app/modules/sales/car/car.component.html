@@ -1,0 +1,27 @@
+<h4>Car</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Model</th>
+            <th>Serial</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of sale">
+            <td>{{item.bike.model}}</td>
+            <td>{{item.bike.serial}}</td>
+            <td>{{item.bike.price}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td>Total</td>
+            <td>{{total}}</td>
+        </tr>
+    </tfoot>
+</table>
+
+<button (click)="confirmSale()">Confirmar</button>

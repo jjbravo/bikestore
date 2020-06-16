@@ -11,10 +11,11 @@ import { SalesMainComponent } from './sales-main/sales-main.component';
 import {DialogModule} from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
 import { NewSaleComponent } from './new-sale/new-sale.component';
+import { CarComponent } from './car/car.component';
 
 
 @NgModule({
-  declarations: [CatalogueComponent, DetailCarComponent, SalesListComponent, SalesMainComponent, NewSaleComponent],
+  declarations: [CatalogueComponent, DetailCarComponent, SalesListComponent, SalesMainComponent, NewSaleComponent, CarComponent],
   imports: [
     CommonModule,
     SalesRoutingModule,

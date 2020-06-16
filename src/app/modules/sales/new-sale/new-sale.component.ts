@@ -21,6 +21,7 @@ export class NewSaleComponent implements OnInit, AfterViewInit {
   totalRecords: any;
   total = 0;
   carSale: ISale[] = [];
+  productsList: IBike[] = [];
   constructor(private bikesService: BikesService,  private saleService: SalesService) { }
 
   ngOnInit(): void {
@@ -47,7 +48,9 @@ export class NewSaleComponent implements OnInit, AfterViewInit {
   }
 
   addToCar(bike: IBike): void {
-    if (!this.client) {
+    this.productsList.push(bike);
+    console.log('productsList ', this.productsList);
+  /*  if (!this.client) {
       console.log('Seleccione un Cliente');
     } else {
       this.total += parseFloat(bike.price);
@@ -57,7 +60,7 @@ export class NewSaleComponent implements OnInit, AfterViewInit {
         client: this.client
       });
     }
-
+*/
   }
 
   confirmSale(): void {

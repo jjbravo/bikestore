@@ -42,7 +42,7 @@ export class CatalogueComponent implements OnInit {
     })
       .subscribe((res: any) => {
         this.bikesList = res.content;
-      })
+      });
   }
 
   addToCar(bike: IBike): void {
@@ -52,8 +52,6 @@ export class CatalogueComponent implements OnInit {
     } else {
       this.total += parseFloat(bike.price);
       this.carSale.push({
-        bikeId: bike.id,
-        clientId: this.selectedClientItem.id,
         bike: bike,
         client: this.selectedClientItem
       });

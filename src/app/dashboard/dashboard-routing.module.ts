@@ -22,6 +22,11 @@ const routes: Routes = [
       {
         path:'bikes-update',
         component: BikesUpdateComponent
+      },
+      {
+        path: 'clients',
+        loadChildren: () => import('../modules/clients/clients.module')
+        .then(m => m.ClientsModule)
       }
     ]
   }

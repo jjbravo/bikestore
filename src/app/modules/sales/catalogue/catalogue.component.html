@@ -31,7 +31,7 @@
         </div>
         <div class="card" *ngIf="selectedClientItem">
             <div class="card-body" style="width: 100%;">
-                    <h4 class="card-title">Nombres: {{selectedClientItem.clientName}}</h4>
+                    <h4 class="card-title">Nombres: {{selectedClientItem.name}}</h4>
                     <p class="card-text">Documento: {{selectedClientItem.documentNumber}}</p>
                     <p class="card-text">Email: {{selectedClientItem.clientEmail}}</p>
                     <p class="card-text">Teléfono: {{selectedClientItem.phoneNumber}}</p>
@@ -47,7 +47,7 @@
 
         <div class="row">
             <div class="card text-left" style="width: 8rem;margin: 6px;" *ngFor="let item of bikesList">
-                <img class="card-img-top" [src]="'data:' + item.imageContentType + ';base64,' + item.image"
+                <img class="card-img-top" [src]="'../../../assets/bikes/a.png'"
                     style="max-height: 286px;" alt="bike image" />
                 <div class="card-body">
                     <h5 class="card-title">{{item.model}}</h5>
@@ -60,7 +60,7 @@
     </div>
     <div class="col-lg-2">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <div class="btn-primary" *ngIf="carSale.length > 0">{{carSale[0].client.clientName}}</div>
+            <div class="btn-primary" *ngIf="carSale.length > 0">{{carSale[0].client.name}}</div>
             <a class="nav-link active car-app">Car {{total | currency: 'COP $'}}</a>
             <div *ngFor="let item of carSale">
                 <span class="item-car">{{item.bike.model}} {{item.bike.price | currency }}</span>

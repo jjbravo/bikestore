@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientsMainComponent } from './clients-main/clients-main.component';
 import { ClientsListComponent } from './clients-list/clients-list.component';
 import { ClientsCreateComponent } from './clients-create/clients-create.component';
+import { ViewWithSalesComponent } from './view-with-sales/view-with-sales.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
         component: ClientsCreateComponent
       }
     ]
+  },
+  {
+    path: 'view-with-sales',
+    component: ViewWithSalesComponent
   }
 ];
 

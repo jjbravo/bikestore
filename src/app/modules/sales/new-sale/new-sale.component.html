@@ -1,0 +1,50 @@
+<div class="row">
+
+    <div class="col-lg-10">
+        <div *ngIf="bikesList.length > 0">
+            
+            <h2>Nuevo pedido</h2>
+            <div class="row justify-content-center">
+                <div class="card text-left" style="width: 8rem;margin: 6px;" *ngFor="let item of bikesList">
+                    <img class="card-img-top" [src]="'../../../assets/bikes/a.png'"
+                    style="max-height: 286px;" alt="bike image" />
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.model}}</h5>
+                        <p class="card-text">{{item.price | currency:'COP $':'symbol':'4.0-2'}}</p>
+                        <p class="card-text">{{item.serial}}</p>
+                        <button (click)="addToCar(item)" class="btn btn-success btn-sm">Comprar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    
+                    <p-paginator [rows]="pageSize" [totalRecords]="totalRecords" (onPageChange)="loadAll($event)">
+                    </p-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="btn btn-primary" *ngIf="carSale.length > 0">{{client.name}}</div>
+            <a class="nav-link active car-app">TOTAL: {{total | currency: 'COP $'}}</a>
+            <div *ngFor="let item of carSale">
+                <span class="item-car">{{item.bike.model}} {{item.bike.price | currency }}</span>
+            </div>
+            <button class="btn btn-sm btn-info" (click)="cleanCar()">Vaciar</button>
+        </div>
+        <button class="btn btn-primary" (click)="confirmSale()" >Confirmar</button>
+    </div>
+    
+</div>
+    
+    
+    <p-dialog header="Mensaje" [(visible)]="confirmSaleShowDialog">
+        <p>Venta realizada correctamente</p>
+        <p-footer>
+            <button type="button" class="btn btn-success" pButton icon="pi pi-check" (click)="closeDialog()" label="Yes">Ok</button>
+        </p-footer>
+    </p-dialog>
+    

@@ -1,18 +1,28 @@
 export interface IClient {
     id?: number;
-    clientName: string;
+    name: string;
     clientEmail: string;
     phoneNumber: string;
     documentNumber: String;
-    documentType: String;
 }
 
 export class Client implements IClient {
     id?: number;
-    clientName: string;
+    name: string;
     clientEmail: string;
     phoneNumber: string;
     documentNumber: String;
-    documentType: String;
 
+}
+
+
+
+export interface IClientWithSale {
+    phoneNumber: string;
+    serial: string;
+    email: string;
+    model: string;
+    price: string;
+    documentNumber: string;
+    name: string;
 }

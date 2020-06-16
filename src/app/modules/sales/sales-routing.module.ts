@@ -4,6 +4,7 @@ import { CatalogueComponent } from './catalogue/catalogue.component';
 import { DetailCarComponent } from './detail-car/detail-car.component';
 import { SalesListComponent } from './sales-list/sales-list.component';
 import { SalesMainComponent } from './sales-main/sales-main.component';
+import { NewSaleComponent } from './new-sale/new-sale.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,11 @@ const routes: Routes = [
         component: SalesListComponent
       }
     ]
-  }, 
+  },
+  {
+    path: 'new-sale',
+    component: NewSaleComponent
+  }
 ];
 
 @NgModule({

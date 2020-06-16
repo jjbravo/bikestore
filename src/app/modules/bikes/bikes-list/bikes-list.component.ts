@@ -51,6 +51,8 @@ export class BikesListComponent implements OnInit {
     this.pageNumber = numberPage;
     this.filters['pageNumber'] = this.pageNumber;
     this.filters['pageSize'] = this.pageSize;
+    this.filters['sort'] = 'id';
+    this.filters['sort.dir'] = 'desc';
     this.bikeService.query(this.filters)
     .subscribe((res: any) => {
       console.log('Get Data ', res);

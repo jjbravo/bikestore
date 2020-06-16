@@ -18,7 +18,7 @@ export class SalesService {
     }));
   }
   public saveMultiple(saleList: ISale[]): Observable<ISale> {
-    return this.http.post<ISale>(`${environment.END_POINT}/api/sales/miltiple`, saleList)
+    return this.http.post<ISale>(`${environment.END_POINT}/api/sales/multiple`, saleList)
     .pipe(map(res => {
       return res;
     }));

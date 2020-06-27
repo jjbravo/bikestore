@@ -48,19 +48,17 @@ export class NewSaleComponent implements OnInit, AfterViewInit {
   }
 
   addToCar(bike: IBike): void {
-    this.productsList.push(bike);
-    console.log('productsList ', this.productsList);
-  /*  if (!this.client) {
+
+    if (!this.client) {
       console.log('Seleccione un Cliente');
     } else {
       this.total += parseFloat(bike.price);
-      console.log('total ',this.total);
+      console.log('total ', this.total);
       this.carSale.push({
         bike,
         client: this.client
       });
     }
-*/
   }
 
   confirmSale(): void {

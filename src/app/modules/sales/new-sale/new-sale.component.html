@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="col-lg-2">
-     <!--   <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <div class="btn btn-primary" *ngIf="carSale.length > 0">{{client.name}}</div>
             <a class="nav-link active car-app">TOTAL: {{total | currency: 'COP $'}}</a>
             <div *ngFor="let item of carSale">
@@ -36,9 +36,7 @@
             <button class="btn btn-sm btn-info" (click)="cleanCar()">Vaciar</button>
         </div>
         <button class="btn btn-primary" (click)="confirmSale()" >Confirmar</button>
-
-    -->
-    <app-car [productsList]="productsList" [client]="client"  ></app-car>
+    
     </div>
     
 </div>

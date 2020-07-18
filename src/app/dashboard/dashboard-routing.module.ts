@@ -12,21 +12,19 @@ const routes: Routes = [
     component: MainDashboardComponent,
     children: [
       {
-        path: 'catalogo',
-        component: CatalogueComponent
-      },
-      {
-        path:'bikes-list',
-        component: BikesListComponent
-      },
-      {
-        path:'bikes-update',
-        component: BikesUpdateComponent
-      },
-      {
         path: 'clients',
         loadChildren: () => import('../modules/clients/clients.module')
         .then(m => m.ClientsModule)
+      },
+      {
+        path: 'seles',
+        loadChildren: () => import('../modules/sales/sales.module')
+        .then(m => m.SalesModule)
+      },
+      {
+        path: 'bikes',
+        loadChildren: () => import('../modules/bikes/bikes.module')
+        .then(m => m.BikesModule)
       }
     ]
   }

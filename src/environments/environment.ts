@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-   // END_POINT: 'https://peaceful-mesa-49437.herokuapp.com'
-   END_POINT: 'http://localhost:8080'
+    END_POINT: 'https://peaceful-mesa-49437.herokuapp.com'
+   // END_POINT: 'http://localhost:8080'
 };
 
 /*

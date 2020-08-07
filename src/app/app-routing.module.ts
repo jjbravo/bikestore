@@ -10,32 +10,12 @@ const routes: Routes = [
     .then(m => m.DashboardModule)
   },
   {
-    path: 'bikes',
-    loadChildren: () => import('./modules/bikes/bikes.module')
-    .then(m => m.BikesModule)
-  },
-  {
-    path: 'clients',
-    loadChildren: () => import('./modules/clients/clients.module')
-    .then(m => m.ClientsModule)
-  },
-  {
-    path: 'landing',
-    loadChildren: () => import('./landing/landing.module')
-    .then(m => m.LandingModule)
-  },
-  {
-    path: 'sales',
-    loadChildren: () => import('./modules/sales/sales.module')
-    .then(m => m.SalesModule)
-  },
-  {
     path: 'login',
     component: LoginComponent
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];

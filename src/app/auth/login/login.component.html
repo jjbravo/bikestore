@@ -1,21 +1,20 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center mt-5">
         <div class="card text-center">
           <div class="card-body">
             <h4 class="card-title">Login</h4>
-            <form action="">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <div class="form-group">
-                  <label for="">Email</label>
+                  <label for="username">Username</label>
                   <input type="text"
-                    class="form-control" name="email" id="" aria-describedby="helpId" placeholder="">
-                  <small id="helpId" class="form-text text-muted">Email</small>
+                    class="form-control" id="username" formControlName="username"  name="email"  aria-describedby="helpId" placeholder="">
                 </div>
                 <div class="form-group">
-                  <label for="">Password</label>
-                  <input type="password"
-                    class="form-control" name="email" id="" aria-describedby="helpId" placeholder="">
-                  <small id="helpId" class="form-text text-muted">Email</small>
+                  <label for="password">Password</label>
+                  <input type="password" formControlName="password"
+                    class="form-control" name="email" id="password" aria-describedby="helpId" placeholder="">
                 </div>
+                <button type="submit" class="btn btn-success btn-block">Login</button>
             </form>
 
         </div>

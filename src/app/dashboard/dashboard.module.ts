@@ -8,14 +8,15 @@ import { MainDashboardComponent } from './main-dashboard/main-dashboard.componen
 import { SalesModule } from '../modules/sales/sales.module';
 import { BikesModule } from '../modules/bikes/bikes.module';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { 
-  faCoffee, 
-  faStore, 
-  faBicycle, 
+import {
+  faCoffee,
+  faStore,
+  faBicycle,
   faSearch,
   faAngleDoubleLeft,
   faAngleDoubleRight
  } from '@fortawesome/free-solid-svg-icons';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {
     FontAwesomeModule,
     DashboardRoutingModule,
     SalesModule,
-    BikesModule
+    BikesModule,
+    SharedModule
   ]
 })
 export class DashboardModule {

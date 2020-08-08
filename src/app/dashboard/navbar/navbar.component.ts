@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth/login/auth.service';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/auth/account.service';
+import { LoginService } from 'src/app/auth/login/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,11 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed = true;
   collapsed = false;
-  constructor(private authService: AuthService, private router: Router
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private accountService: AccountService
+
     ) { }
 
   ngOnInit(): void {
@@ -23,11 +28,13 @@ export class NavbarComponent implements OnInit {
     this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
 
-  isAuthenticated(): void {
-   // return this.authService.isAuthenticated();
+  isAuthenticated(): boolean {
+    return this.accountService.isAuthenticated();
   }
 
   logout(): void {
-    this.router.navigate(['/login']);
+    this.collapseNavbar();
+    this.loginService.logout();
+    this.router.navigate(['']);
   }
 }

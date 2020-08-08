@@ -8,7 +8,7 @@
     <li class="nav-item">
       <a class="nav-link"  [routerLink]="['../dashboard/sales']"><fa-icon icon="search"></fa-icon>Ventas</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *appHasAnyAuthority="'ROLE_ADMIN'" >
       <a class="nav-link" [routerLink]="['../dashboard/bikes']"><fa-icon icon="bicycle"></fa-icon> Bikes</a>
     </li>
     <li class="nav-item">

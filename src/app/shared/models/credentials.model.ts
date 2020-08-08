@@ -1,11 +1,11 @@
-export interface IUser {
+export interface ICredentials {
     username?: string;
     password?: string;
     roles?: string[];
     rememberMe?: boolean;
 }
 
-export class User implements IUser {
+export class Credentials implements ICredentials {
     constructor(
         public username?: string,
         public password?: string,

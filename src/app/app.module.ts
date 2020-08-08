@@ -10,11 +10,14 @@ import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { AuthInterceptor } from './auth/guards/auth.interceptor';
+import { AccessDeniedComponent } from './auth/access-denied/access-denied.component';
+import { HasAnyAuthorityDirective } from './auth/has-any-authority.directive';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    AccessDeniedComponent,
     ],
   imports: [
     BrowserModule,

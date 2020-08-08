@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { IUser, User } from 'src/app/shared/models/user';
+import { ICredentials, Credentials } from 'src/app/shared/models/credentials.model';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AccountService } from '../account.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    ) { }
 
-  login(credentials: any): Observable<any> {
+  login(credentials: ICredentials): Observable<any> {
     const data = {
       username: credentials.username,
       password: credentials.password,

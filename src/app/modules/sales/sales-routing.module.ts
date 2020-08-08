@@ -5,7 +5,7 @@ import { DetailCarComponent } from './detail-car/detail-car.component';
 import { SalesListComponent } from './sales-list/sales-list.component';
 import { SalesMainComponent } from './sales-main/sales-main.component';
 import { NewSaleComponent } from './new-sale/new-sale.component';
-import { Authority } from 'src/app/shared/constants/authority.constants';
+import { Authority } from 'src/app/auth/auth-shared/constants/authority.constants';
 import { UserRouteAccessService } from 'src/app/auth/user-route-access.service';
 
 

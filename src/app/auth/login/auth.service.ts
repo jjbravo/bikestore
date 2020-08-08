@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { ICredentials, Credentials } from 'src/app/shared/models/credentials.model';
+import { ICredentials, Credentials } from 'src/app/auth/auth-shared/models/credentials.model';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AccountService } from '../account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +21,7 @@ export class AuthService {
 
     return this.http.post<any>(`${environment.END_POINT}/api/authenticate`, data, {observe: 'response'})
     .pipe(map(res => {
-      console.log('RES h ', res);
       const bearerToken = res.headers.get('Authorization');
-      console.log('get token ', bearerToken);
       if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {
         const jwt = bearerToken.slice(7, bearerToken.length);
         this.storeAuthenticationToken(jwt, credentials.rememberMe);

@@ -16,7 +16,7 @@ import {
   faAngleDoubleLeft,
   faAngleDoubleRight
  } from '@fortawesome/free-solid-svg-icons';
-import { SharedModule } from '../shared/shared.module';
+import { SharedAuthModule } from '../auth/auth-shared/shared.module';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { SharedModule } from '../shared/shared.module';
     DashboardRoutingModule,
     SalesModule,
     BikesModule,
-    SharedModule
+    SharedAuthModule
   ]
 })
 export class DashboardModule {

@@ -16,7 +16,6 @@ export class UserRouteAccessService implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     const authorities = route.data['authorities'];
-
     return this.checkLogin(authorities, state.url);
   }
 

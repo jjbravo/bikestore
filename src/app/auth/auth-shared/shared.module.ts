@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HasAnyAuthorityDirective } from '../auth/has-any-authority.directive';
+import { HasAnyAuthorityDirective } from './has-any-authority.directive';
 
 
 
@@ -16,4 +16,4 @@ import { HasAnyAuthorityDirective } from '../auth/has-any-authority.directive';
   ],
 
 })
-export class SharedModule { }
+export class SharedAuthModule { }

@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/auth/login/login.service';
 export class NavbarComponent implements OnInit {
   isNavbarCollapsed = true;
   collapsed = false;
+  nameUser: string;
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.nameUser = this.accountService.getNameUser();
   }
 
   collapseNavbar(): void {

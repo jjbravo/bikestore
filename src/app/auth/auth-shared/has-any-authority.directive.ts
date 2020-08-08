@@ -1,6 +1,6 @@
 import { Directive, Input, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AccountService } from './account.service';
+import { AccountService } from '../account.service';
 
 
 /**
@@ -25,8 +25,6 @@ export class HasAnyAuthorityDirective implements OnDestroy {
 
   @Input()
   set appHasAnyAuthority(value: string | string[]) {
-    console.log('verifi auntority SET ', value);
-
     this.authorities = typeof value === 'string' ? [value] : value;
     this.updateView();
     // Get notified each time authentication state changes.
@@ -41,7 +39,6 @@ export class HasAnyAuthorityDirective implements OnDestroy {
 
   private updateView(): void {
     const hasAnyAuthority = this.accountService.hasAnyAuthority(this.authorities);
-    console.log('verifi auntority ', hasAnyAuthority);
     this.viewContainerRef.clear();
     if (hasAnyAuthority) {
       this.viewContainerRef.createEmbeddedView(this.templateRef);

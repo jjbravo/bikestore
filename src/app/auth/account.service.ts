@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ICredentials } from '../shared/models/credentials.model';
+import { ICredentials } from './auth-shared/models/credentials.model';
 import { Observable, of, identity, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Account } from './login/account.model';
+import { Account } from './auth-shared/models/account.model';
 import { catchError, tap, shareReplay, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -26,17 +26,14 @@ export class AccountService {
    */
   identity(force?: boolean): Observable<Account| null> {
     if (!this.accountCache || force || !this.isAuthenticated()) {
-      console.warn('Identity init - force ', force);
       this.accountCache = this.fetch()
       .pipe(catchError(() => {
         return of(null);
       }),
       tap((account: Account | null) => {
-        console.log('Account ', account);
         this.authenticate(account);
         if (account) {
           this.router.navigate(['/dashboard']);
-          console.log('Account existe .. ', account);
         }
       }),
       shareReplay()
@@ -51,6 +48,11 @@ export class AccountService {
 
   isAuthenticated(): boolean {
     return this.userIdentity !== null;
+  }
+
+
+  getNameUser(): string {
+    return this.userIdentity.firstName + ' ' + this.userIdentity.lastName;
   }
 
   getAuthenticationState(): Observable<Account | null> {
@@ -70,7 +72,6 @@ export class AccountService {
   }
 
   private fetch(): Observable<Account> {
-    console.log('fetch...');
     return this.http.get<Account>(`${environment.END_POINT}/api/account`);
   }
 }

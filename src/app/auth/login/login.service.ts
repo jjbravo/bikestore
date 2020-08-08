@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
-import { ICredentials } from 'src/app/shared/models/credentials.model';
+import { ICredentials } from 'src/app/auth/auth-shared/models/credentials.model';
 import { AccountService } from '../account.service';
 import { AuthService } from './auth.service';
-import { Account } from './account.model';
+import { Account } from '../auth-shared/models/account.model';
 
 
 @Injectable({ providedIn: 'root' })

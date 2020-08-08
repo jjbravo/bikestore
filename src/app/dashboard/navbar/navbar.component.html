@@ -12,19 +12,9 @@
             </li>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li *ngSwitchCase="false" class="nav-item active">
-                <a class="nav-link" [routerLink]="['/login']" >
-                    <fa-icon icon="bicycle"></fa-icon>Login <span class="sr-only">(current)</span>
-                </a>
-            </li>
-
-        </ul>
-            
+          
+        <span class="navbar-text bike-username">{{nameUser}}</span>
+        
         <div class="btn-group" *ngSwitchCase="true" >
             <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">

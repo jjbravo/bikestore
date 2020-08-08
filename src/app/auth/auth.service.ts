@@ -13,13 +13,7 @@ export class AuthService {
     ) { }
 
   login(credentials: ICredentials): Observable<any> {
-    const data = {
-      username: credentials.username,
-      password: credentials.password,
-      rememberMe: credentials.rememberMe,
-    };
-
-    return this.http.post<any>(`${environment.END_POINT}/api/authenticate`, data, {observe: 'response'})
+    return this.http.post<any>(`${environment.END_POINT}/api/authenticate`, credentials, {observe: 'response'})
     .pipe(map(res => {
       const bearerToken = res.headers.get('Authorization');
       if (bearerToken && bearerToken.slice(0, 7) === 'Bearer ') {

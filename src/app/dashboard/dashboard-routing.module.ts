@@ -10,7 +10,7 @@ import { Authority } from '../shared/constants/authority.constants';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: MainDashboardComponent,
     children: [
       {

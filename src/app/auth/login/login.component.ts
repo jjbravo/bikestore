@@ -14,7 +14,8 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   loginForm = this.fb.group({
     username: [''],
-    password: ['']
+    password: [''],
+    rememberMe: false
   });
 
   constructor(private fb: FormBuilder,

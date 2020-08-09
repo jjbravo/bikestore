@@ -17,6 +17,10 @@ export class AccountService {
 
   constructor( private http: HttpClient, private router: Router) { }
 
+  /**
+   * Create new account
+   * @param account
+   */
   save(account: ICredentials): Observable<ICredentials> {
     return this.http.post<ICredentials>(`${environment.END_POINT}/api/account`, account);
   }

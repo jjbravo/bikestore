@@ -16,7 +16,7 @@ import {
   faAngleDoubleLeft,
   faAngleDoubleRight
  } from '@fortawesome/free-solid-svg-icons';
-import { SharedAuthModule } from '../auth/auth-shared/shared.module';
+import { SharedAuthModule } from '../auth/auth-shared/auth-shared.module';
 
 
 @NgModule({

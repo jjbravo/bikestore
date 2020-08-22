@@ -25,10 +25,10 @@ const routes: Routes = [
       },
       {
         path: 'bikes',
-        data: {
+       /* data: {
           authorities: [Authority.CLIENT, Authority.ADMIN]
         },
-        canActivate: [UserRouteAccessService],
+        canActivate: [UserRouteAccessService],*/
         loadChildren: () => import('../modules/bikes/bikes.module')
         .then(m => m.BikesModule)
       }

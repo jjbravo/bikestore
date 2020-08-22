@@ -9,10 +9,10 @@ import { Authority } from './auth/auth-shared/constants/authority.constants';
 const routes: Routes = [
   {
     path: 'dashboard',
-    data: {
+   /* data: {
       authorities: [Authority.ADMIN, Authority.USER]
     },
-    canActivate: [UserRouteAccessService],
+    canActivate: [UserRouteAccessService],*/
     loadChildren: () => import('./dashboard/dashboard.module')
     .then(m => m.DashboardModule)
   },

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ICredentials } from './auth-shared/models/credentials.model';
-import { Observable, of, identity, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Account } from './auth-shared/models/account.model';
 import { catchError, tap, shareReplay, map } from 'rxjs/operators';

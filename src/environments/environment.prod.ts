@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  END_POINT: 'https://peaceful-mesa-49437.herokuapp.com'
-
+  END_POINT: '185.25.63.48:8080'
 };

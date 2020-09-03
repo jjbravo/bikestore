@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+        <div class="col-lg-3"> 
+            <input 
+            type="radio" 
+            (change)="itemRadioSelected()" 
+            class="form-check-input" 
+            [(ngModel)]="selectedItem"
+            name="selectedItem" 
+            value="M"> MASCULINO: {{userMale}}
+        </div>
+        <div class="col-lg-3"> 
+            <input 
+            type="radio" 
+            (change)="itemRadioSelected()" 
+            class="form-check-input" 
+            [(ngModel)]="selectedItem"
+            name="selectedItem" 
+            value="F"> FEMENINO: {{userFemale}}
+        </div>
+        <div class="col-lg-3"> 
+            <input 
+            type="radio" 
+            (change)="itemRadioSelected()" 
+            class="form-check-input" 
+            [(ngModel)]="selectedItem"
+            name="selectedItem" 
+            value="T"> Todos: {{userMale + userFemale}}
+        </div>
+</div>
+
+<hr>

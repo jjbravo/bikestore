@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AccessDeniedComponent } from './auth/access-denied/access-denied.component';
 import { UserRouteAccessService } from './auth/user-route-access.service';
 import { Authority } from './auth/auth-shared/constants/authority.constants';
+import { ListUserComponent } from './components/list-user/list-user.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
     .then(m => m.DashboardModule)
   },
   {
+    path: 'user-count',
+    component: ListUserComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -26,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'user-count',
     pathMatch: 'full'
   }
 ];

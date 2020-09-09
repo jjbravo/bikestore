@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'user-count',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
 ];

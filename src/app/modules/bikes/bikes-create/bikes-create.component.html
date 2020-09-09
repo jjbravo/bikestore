@@ -51,6 +51,11 @@
         <input type="text" formControlName="serial"
           class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">Help text</small>
+        <small class="form-text text-danger"
+        *ngIf="formCreate.get('serial')?.errors?.exist">
+            El Serial ya existe
+        </small>
+      
       </div>
     <button type="submit"  [disabled]="formCreate.invalid" >Guardar</button>
 </form>

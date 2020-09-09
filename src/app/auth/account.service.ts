@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Account } from './auth-shared/models/account.model';
 import { catchError, tap, shareReplay, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { createRequestOption } from '../shared/request_utils';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,7 @@ export class AccountService {
       }),
       shareReplay()
       );
+
     }
     return this.accountCache;
   }
@@ -56,7 +58,7 @@ export class AccountService {
 
 
   getNameUser(): string {
-    return this.userIdentity.firstName + ' ' + this.userIdentity.lastName;
+    return this.userIdentity.name + ' ' + this.userIdentity.lastName;
   }
 
   getAuthenticationState(): Observable<Account | null> {
@@ -71,11 +73,15 @@ export class AccountService {
     if (!Array.isArray(authorities)) {
       authorities = [authorities];
     }
+    console.warn('userIdentity.authorities ', this.userIdentity);
 
     return this.userIdentity.authorities.some((authority: string) => authorities.includes(authority));
   }
 
   private fetch(): Observable<Account> {
-    return this.http.get<Account>(`${environment.END_POINT}/api/account`);
+    const jwt = localStorage.getItem('token') ||  sessionStorage.getItem('token');
+    const payload: any = JSON.parse(atob(jwt.split('.')[1]));
+    const params = createRequestOption({username: payload.user_name });
+    return this.http.get<Account>(`${environment.END_POINT}/api/user/account`, {params: params});
   }
 }

@@ -15,11 +15,19 @@ const routes: Routes = [
     children: [
       {
         path: 'clients',
+        data: {
+          authorities: [Authority.USER]
+        },
+        canActivate: [UserRouteAccessService],
         loadChildren: () => import('../modules/clients/clients.module')
         .then(m => m.ClientsModule)
       },
       {
         path: 'sales',
+        data: {
+          authorities: [Authority.ADMIN]
+        },
+        canActivate: [UserRouteAccessService],
         loadChildren: () => import('../modules/sales/sales.module')
         .then(m => m.SalesModule)
       },

@@ -1,1 +1,30 @@
-<p>clients-create works!</p>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <form [formGroup]="formClient" (ngSubmit)="createClient()">
+            <div class="form-group">
+              <label for="">Nombres</label>
+              <input type="text" name="" id="" formControlName="firstName" class="form-control" placeholder="" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Help text</small>
+            </div>
+            <div class="form-group">
+              <label for="">Apellidos</label>
+              <input type="text" name="" id="" formControlName="lastName" class="form-control" placeholder="" aria-describedby="helpId">
+              <small id="helpId" class="text-muted">Help text</small>
+            </div>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input type="text" name="" id="" formControlName="email" class="form-control" placeholder="" >
+              <small id="helpId" class="text-muted">Help text</small>
+              <div *ngIf="formClient.get('email').invalid && (formClient.get('email').dirty || formClient.get('email').touched)">
+                <small class="form-text text-danger" *ngIf="formClient.get('email').errors.required">
+                    Este campo es requerido
+                </small >
+                <small class="form-text text-danger" *ngIf="formClient.get('email').errors.pattern">
+                    No es un email válido
+                </small>
+              
+              </div>
+            </div>
+        </form>
+    </div>
+</div>

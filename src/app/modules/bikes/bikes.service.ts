@@ -13,8 +13,8 @@ export class BikesService {
   constructor(private http: HttpClient) { }
 
   public query(req?: any): Observable<IBike[]> {
-    let params = createRequestOption(req);
-    return this.http.get<IBike[]>(`${environment.END_POINT}/api/bikes`,{params: params})
+    const params = createRequestOption(req);
+    return this.http.get<IBike[]>(`${environment.END_POINT}/api/bikes`, { params: params })
     .pipe(map(res => {
       return res;
     }));
@@ -40,10 +40,9 @@ export class BikesService {
     }));
   }
   public findBikeBySerial(serial: string): Observable<IBike> {
-    let params = new HttpParams();
-		params = params.append('serial', serial);
+    const params = createRequestOption(serial);
     console.log("params",params);
-    return this.http.get<IBike>(`${environment.END_POINT}/api/bikes/find-bike-by-serial`, {params: params})
+    return this.http.get<IBike>(`${environment.END_POINT}/api/bikes/validation-serial`, {params: params})
     .pipe(map(res => {
       return res;
     }));

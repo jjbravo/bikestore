@@ -28,7 +28,6 @@ export class AuthService {
     params.set('password', credentials.password);
 
     console.log(params.toString());
-  //  return this.http.post<any>(urlEndpoint, params.toString(), { headers: httpHeaders });
     // *************
     return this.http.post<any>(`${environment.END_POINT}/oauth/token`, params.toString(), { headers: httpHeaders, observe: 'response' })
     .pipe(map(res => {

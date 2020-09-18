@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { BikesService } from '../bikes.service';
 import { IBike } from '../model/bike';
-import { existAsyncValidator } from '../../../shared/customValidators/exist-validator';
+import { existAsyncValidator, existAsyncValidatorModel } from '../../../shared/customValidators/exist-validator';
 @Component({
   selector: 'app-bikes-create',
   templateUrl: './bikes-create.component.html',
@@ -13,9 +13,9 @@ export class BikesCreateComponent implements OnInit {
  checked: boolean;
 
   formCreate = this.formBuilder.group({
-    model: ['', [Validators.maxLength(3), Validators.minLength(2), Validators.required]],
+    model: ['', [Validators.maxLength(3), Validators.minLength(2), Validators.required], existAsyncValidatorModel(this.bikesService)],
     price: ['', [Validators.required]],
-    serial: ['', [Validators.required, Validators.maxLength(8)], existAsyncValidator(this.bikesService)],
+    serial: ['', [Validators.required, Validators.maxLength(8)], existAsyncValidator(this.bikesService)   ],
     checked: []
   });
 

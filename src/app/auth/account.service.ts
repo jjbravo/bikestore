@@ -78,10 +78,13 @@ export class AccountService {
     return this.userIdentity.authorities.some((authority: string) => authorities.includes(authority));
   }
 
+
   private fetch(): Observable<Account> {
     const jwt = localStorage.getItem('token') ||  sessionStorage.getItem('token');
-    const payload: any = JSON.parse(atob(jwt.split('.')[1]));
-    const params = createRequestOption({username: payload.user_name });
-    return this.http.get<Account>(`${environment.END_POINT}/api/user/account`, {params: params});
+    if (jwt) {
+      const payload: any = JSON.parse(atob(jwt.split('.')[1]));
+      const params = createRequestOption({username: payload.user_name });
+      return this.http.get<Account>(`${environment.END_POINT}/api/user/account`, {params: params});
+   }
   }
 }

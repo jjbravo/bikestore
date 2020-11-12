@@ -1,5 +1,5 @@
 export const enum Authority {
-    USER = 'ROLE_USER',
-    ADMIN = 'ROLE_ADMIN',
-    CLIENT = 'ROLE_CLIENT'
+    ROLE_USER = 'ROLE_USER',
+    ROLE_ADMIN = 'ROLE_ADMIN',
+    ROLE_CLIENT = 'ROLE_CLIENT'
 }

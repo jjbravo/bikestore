@@ -49,14 +49,14 @@ export class BikesListComponent implements OnInit {
   loadingPagenation(numberPage: number): void {
     console.log('Event ', numberPage);
     this.pageNumber = numberPage;
-    this.filters['page'] = this.pageNumber;
-    this.filters['size'] = this.pageSize;
+    this.filters['pageNumber'] = this.pageNumber;
+    this.filters['pageSize'] = this.pageSize;
    // this.filters['sort'] = 'id';
   //  this.filters['sort.dir'] = 'desc';
     this.bikeService.query(this.filters)
     .subscribe((res: any) => {
       console.log('Get Data ', res);
-      this.bikesList = res; // res.content
+      this.bikesList = res.content; // res.content
       this.totalRecords = res.totalElements;
 
     }, error => {

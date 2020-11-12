@@ -15,7 +15,7 @@ export class AuthService {
   login(credentials: ICredentials): Observable<any> {
     // *************
 
-    const credenciales = btoa('inventory' + ':' + '12345');
+    const credenciales = btoa('bikestore' + ':' + '12345');
 
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',

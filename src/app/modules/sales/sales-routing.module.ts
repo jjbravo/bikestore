@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'sales-list',
         data: {
-          authorities: [Authority.CLIENT, Authority.ADMIN]
+          authorities: [Authority.ROLE_CLIENT, Authority.ROLE_ADMIN]
         },
         canActivate: [UserRouteAccessService],
         component: SalesListComponent

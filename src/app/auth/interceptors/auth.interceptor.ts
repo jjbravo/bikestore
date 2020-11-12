@@ -1,3 +1,6 @@
+// GENERATE ng g interceptor  auth/guards/auth --skip-tests
+
+
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,

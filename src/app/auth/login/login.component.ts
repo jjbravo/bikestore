@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
+    if (this.accountService.existToken()) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   login(): void {

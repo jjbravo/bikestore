@@ -21,14 +21,18 @@ export class HasAnyAuthorityDirective implements OnDestroy {
   private authorities: string[] = [];
   private authenticationSubscription?: Subscription;
 
-  constructor(private accountService: AccountService, private templateRef: TemplateRef<any>, private viewContainerRef: ViewContainerRef) {}
+  constructor(private accountService: AccountService,
+              private templateRef: TemplateRef<any>,
+              private viewContainerRef: ViewContainerRef
+    ) {}
 
   @Input()
   set appHasAnyAuthority(value: string | string[]) {
     this.authorities = typeof value === 'string' ? [value] : value;
     this.updateView();
     // Get notified each time authentication state changes.
-    this.authenticationSubscription = this.accountService.getAuthenticationState().subscribe(() => this.updateView());
+    this.authenticationSubscription = this.accountService.getAuthenticationState()
+    .subscribe(() => this.updateView());
   }
 
   ngOnDestroy(): void {

@@ -29,15 +29,16 @@ export class AccountService {
   /**
    * identity to user in backend
    */
-  identity(force?: boolean): Observable<Account| null> {
+  identity(force?: boolean): Observable<Account> {
     if (!this.accountCache || force || !this.isAuthenticated()) {
       this.accountCache = this.fetch()
       .pipe(catchError(() => {
         return of(null);
       }),
       tap((account: Account | null) => {
-        this.authenticate(account);
+       
         if (account) {
+          this.authenticate(account);
           this.router.navigate(['/dashboard']);
         }
       }),
@@ -56,9 +57,12 @@ export class AccountService {
     return this.userIdentity !== null;
   }
 
+  existToken(): boolean {
+    return localStorage.getItem('token') || sessionStorage.getItem('token') ? true : false;
+  }
 
   getNameUser(): string {
-    return this.userIdentity.name + ' ' + this.userIdentity.lastName;
+    return this.userIdentity.firstName + ' ' + this.userIdentity.lastName;
   }
 
   getAuthenticationState(): Observable<Account | null> {
@@ -81,10 +85,13 @@ export class AccountService {
 
   private fetch(): Observable<Account> {
     const jwt = localStorage.getItem('token') ||  sessionStorage.getItem('token');
+    let params: any;
     if (jwt) {
-      const payload: any = JSON.parse(atob(jwt.split('.')[1]));
-      const params = createRequestOption({username: payload.user_name });
-      return this.http.get<Account>(`${environment.END_POINT}/api/user/account`, {params: params});
+    const payload: any = JSON.parse(atob(jwt.split('.')[1]));
+    params = createRequestOption({username: payload.user_name });
+   } else {
+     params = null;
    }
+    return this.http.get<Account>(`${environment.END_POINT}/api/user/account`, {params: params});
   }
 }

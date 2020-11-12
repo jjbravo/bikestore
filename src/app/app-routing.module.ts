@@ -10,17 +10,17 @@ import { ListUserComponent } from './components/list-user/list-user.component';
 const routes: Routes = [
   {
     path: 'dashboard',
-   /* data: {
-      authorities: [Authority.ADMIN, Authority.USER]
+    data: {
+      authorities: [Authority.ROLE_ADMIN, Authority.ROLE_USER, Authority.ROLE_CLIENT]
     },
-    canActivate: [UserRouteAccessService],*/
+    canActivate: [UserRouteAccessService],
     loadChildren: () => import('./dashboard/dashboard.module')
     .then(m => m.DashboardModule)
   },
-  {
+/*  {
     path: 'user-count',
     component: ListUserComponent
-  },
+  },*/
   {
     path: 'login',
     component: LoginComponent

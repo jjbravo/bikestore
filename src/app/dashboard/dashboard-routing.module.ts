@@ -16,7 +16,7 @@ const routes: Routes = [
       {
         path: 'clients',
         data: {
-          authorities: [Authority.USER]
+          authorities: [Authority.ROLE_CLIENT, Authority.ROLE_ADMIN]
         },
         canActivate: [UserRouteAccessService],
         loadChildren: () => import('../modules/clients/clients.module')
@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'sales',
         data: {
-          authorities: [Authority.ADMIN]
+          authorities: [Authority.ROLE_ADMIN]
         },
         canActivate: [UserRouteAccessService],
         loadChildren: () => import('../modules/sales/sales.module')
@@ -33,10 +33,10 @@ const routes: Routes = [
       },
       {
         path: 'bikes',
-       /* data: {
-          authorities: [Authority.CLIENT, Authority.ADMIN]
+        data: {
+          authorities: [Authority.ROLE_CLIENT, Authority.ROLE_ADMIN]
         },
-        canActivate: [UserRouteAccessService],*/
+        canActivate: [UserRouteAccessService],
         loadChildren: () => import('../modules/bikes/bikes.module')
         .then(m => m.BikesModule)
       }

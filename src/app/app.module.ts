@@ -9,11 +9,12 @@ import { HeaderComponent } from './modules/common/header/header.component';
 import { LoginComponent } from './auth/login/login.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { AuthInterceptor } from './auth/guards/auth.interceptor';
+import { AuthInterceptor } from './auth/interceptors/auth.interceptor';
 import { AccessDeniedComponent } from './auth/access-denied/access-denied.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { CountUserComponent } from './components/count-user/count-user.component';
 import { ListUserComponent } from './components/list-user/list-user.component';
+import { AuthExpiredInterceptor } from './auth/interceptors/auth-expired.interceptor';
 
 
 @NgModule({
@@ -39,6 +40,11 @@ import { ListUserComponent } from './components/list-user/list-user.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthExpiredInterceptor,
       multi: true
     }
   ],

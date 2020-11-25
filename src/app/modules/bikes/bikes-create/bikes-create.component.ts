@@ -16,7 +16,8 @@ export class BikesCreateComponent implements OnInit {
     model: ['', [Validators.maxLength(3), Validators.minLength(2), Validators.required], existAsyncValidatorModel(this.bikesService)],
     price: ['', [Validators.required]],
     serial: ['', [Validators.required, Validators.maxLength(8)], existAsyncValidator(this.bikesService)   ],
-    checked: []
+    checked: [],
+    image: null
   });
 
   searchForm = this.formBuilder.group({
@@ -28,7 +29,7 @@ export class BikesCreateComponent implements OnInit {
   }
 
   searchBike() {
-    console.warn('serial ',this.searchForm.value.serial);
+    console.warn('serial ', this.searchForm.value.serial);
     this.bikesService.findBikeBySerial(this.searchForm.value.serial)
     .subscribe(res => {
       console.warn(res);
@@ -48,5 +49,9 @@ export class BikesCreateComponent implements OnInit {
 
   change(status: any): void {
     console.warn('status ',status);
+  }
+
+  uploadFile(event: any): void {
+    console.warn('file ', event.target.files[0]);
   }
 }
